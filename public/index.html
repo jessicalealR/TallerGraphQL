@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+    .table-responsive {
+      margin-top: 20px;
+    }
+    .form-control {
+      margin-bottom: 10px;
+    }
+    #editEmployeeContainer {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">Employee Management</h1>
+    <div id="addEmployeeContainer" class="card">
+      <div class="card-body">
+        <h2 class="card-title">Add New Employee</h2>
+        <form id="addEmployeeForm">
+          <input type="text" id="newEmployeeName" class="form-control" placeholder="Name" required>
+          <input type="text" id="newEmployeePosition" class="form-control" placeholder="Position" required>
+          <input type="text" id="newEmployeeDepartment" class="form-control" placeholder="Department" required>
+          <input type="number" id="newEmployeeSalary" class="form-control" placeholder="Salary" required>
+          <input type="date" id="newEmployeeHireDate" class="form-control" placeholder="Hire Date" required>
+          <button type="button" class="btn btn-primary" onclick="addEmployee()">Add Employee</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="editEmployeeContainer" class="card">
+      <div class="card-body">
+        <h2 class="card-title">Edit Employee</h2>
+        <form id="editEmployeeForm">
+          <input type="hidden" id="editEmployeeId">
+          <input type="text" id="editEmployeeName" class="form-control" placeholder="Name" required>
+          <input type="text" id="editEmployeePosition" class="form-control" placeholder="Position" required>
+          <input type="text" id="editEmployeeDepartment" class="form-control" placeholder="Department" required>
+          <input type="number" id="editEmployeeSalary" class="form-control" placeholder="Salary" required>
+          <input type="date" id="editEmployeeHireDate" class="form-control" placeholder="Hire Date" required>
+          <button type="button" class="btn btn-primary" onclick="updateEmployee()">Update Employee</button>
+          <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Filter Employees</h2>
+        <form id="filterEmployeesForm">
+          <div class="form-row">
+            <div class="col">
+              <select id="filterType" class="form-control">
+                <option value="id">ID</option>
+                <option value="position">Position</option>
+                <option value="hireDate">Hire Date</option>
+                <option value="department">Department</option>
+              </select>
+            </div>
+            <div class="col">
+              <input type="text" id="filterValue" class="form-control" placeholder="Enter filter value">
+            </div>
+            <div class="col">
+              <button type="button" class="btn btn-primary" onclick="filterEmployees()">Apply Filters</button>
+              <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table id="employees" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Hire Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
